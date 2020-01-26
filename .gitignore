@@ -35,3 +35,6 @@ jspm_packages/
 .env
 .env.test
 
+# config files
+config/config.env
+

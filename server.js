@@ -1,7 +1,9 @@
 const path = require("path");
-require("dotenv").config();
 const express = require("express");
 require("express-async-errors"); // handle all async promise rejections and uncaught exception errors without requiring trycatch blocks
+
+// set up app config env variables
+require("dotenv").config({ path: "./config/config.env" });
 
 const app = express();
 
