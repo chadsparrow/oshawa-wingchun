@@ -60,6 +60,7 @@ if (!process.env.JWT_PRIVATE_KEY) {
   process.exit(1);
 }
 
+// send requests to route handlers
 require('./startup/routes')(app);
 
 // configure backend server port
