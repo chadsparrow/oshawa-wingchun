@@ -15,13 +15,13 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
+const morgan = require('morgan');
 
 // console colors
 const colors = require('colors');
-
-// Joi form validation import
-const Joi = require('@hapi/joi');
-Joi.objectId = require('joi-objectid')(Joi);
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // Consume express and mongo sanitizations and security modules
 app.use(helmet());

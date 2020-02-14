@@ -10,7 +10,9 @@ module.exports = async function db() {
     useUnifiedTopology: true
   });
 
-  console.log(`API Server connected to MongoDB...`.green.bold.underline);
+  console.log(
+    `API Server connected to MongoDB mode:(${process.env.NODE_ENV})...`.green.bold.underline
+  );
 
   process.on('SIGINT', async () => {
     await mongoose.disconnect();
