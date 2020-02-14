@@ -1,6 +1,6 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const colors = require("colors");
+require('dotenv').config();
+const mongoose = require('mongoose');
+const colors = require('colors');
 
 module.exports = async function db() {
   await mongoose.connect(process.env.MONGODB_URI, {
@@ -10,15 +10,15 @@ module.exports = async function db() {
     useUnifiedTopology: true
   });
 
-  console.log("API Server connected to MongoDB".green.bold.underline);
+  console.log(`API Server connected to MongoDB...`.green.bold.underline);
 
-  process.on("SIGINT", async () => {
+  process.on('SIGINT', async () => {
     await mongoose.disconnect();
-    console.log("MongoDB disconnected due to app termination".red.bold.underline);
+    console.log('MongoDB disconnected due to app termination'.red.bold.underline);
     process.exit(0);
   });
 
-  process.on("exit", async code => {
+  process.on('exit', async code => {
     await mongoose.disconnect();
     console.log(
       `MongoDB disconnected due to app termination with code: ${code}`.red.bold.underline
